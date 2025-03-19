@@ -42,3 +42,14 @@ let servers = {
 - copy and paste result in window2 (SDP Offer)-> click `create answer`
 - copy sdp answer -> paste answer in window 1 
 - click `add answer`
+
+### signaling data
+- @45min55sec
+
+### agora.io
+- create an account
+- create a project -> testing mode (copy api key)
+- goto CONSOLE -> resource center -> downloads
+- download sdks -> web -> realtime messaging sdk
+- put in index.html script
+- we have access to `AgoraRTM` because of the downloaded sdk

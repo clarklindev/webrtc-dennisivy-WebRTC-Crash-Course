@@ -1,6 +1,14 @@
+const AgoraRTM = require('agora-rtm-sdk');
+
+let APP_ID = "e7d0ec3a3ae34af7b55770b1d3ee77e9";
+
 let peerConnection;
 let localStream;
 let remoteStream;
+
+let uid = String(Math.floor(Math.random * 10000));//random id
+let token = null; //only need app id because our setting only requires app id (agora.io)
+let client;
 
 //STUN SERVERS
 let servers = {
@@ -13,9 +21,24 @@ let servers = {
 
 //getUserMedia "hey...this is my camera view"
 const init = async () => {
+
+
+    client = await AgoraRTM.createInstance(APP_ID);
+    await client.login({uid, token});
+
+
+    const channel = client.createChannel('main');
+    channel.join();
+    channel.on("MemberJoined", handlePeerJoined);
+
     localStream = await navigator.mediaDevices.getUserMedia({video:true, audio:false});
     document.getElementById('user-1').srcObject = localStream;
 }    
+
+let handlePeerJoined = async (MemberId) => {
+    console.log('a new peer has joined this room:', MemberId);
+    client.sendMessageToPeer({text: "Hey!"}, MemberId);
+}
 
 const createPeerConnection = async (sdpType) => {
     peerConnection = new RTCPeerConnection(servers);
