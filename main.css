@@ -4,7 +4,7 @@ body{
 }
 
 #videos{
-    display: grid;
+    display:grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 1em;
     width: 100%;
@@ -12,18 +12,18 @@ body{
 }
 
 video{
-    width:100%;
-    border:2px solid greenyellow;
+    width: 100%;
+    border: 2px solid greenyellow;
     background-color: rgb(63,62,62);
 }
 
 textarea{
     height: 50px;
-    width: 100%;
+    width: 100%;    
 }
 
-@media screen and (max-width:800px) {
+@media screen and (max-width:800px){
     body{
-        width:100%;
+        width: 100%;
     }
 }
