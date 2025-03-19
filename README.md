@@ -24,3 +24,21 @@ const init = async () => {
     document.getElementById('user-1').srcObject = localStream;
 }
 ```
+
+### add stun
+```js
+//STUN SERVERS
+let servers = {
+    iceServers:[
+        {
+            urls:['stun:stun1.1.google.com:19302', 'stun:stun2.1.google.com:19302']
+        }
+    ]
+}
+```
+
+### Testing
+- window1 -> `create offer`
+- copy and paste result in window2 (SDP Offer)-> click `create answer`
+- copy sdp answer -> paste answer in window 1 
+- click `add answer`
